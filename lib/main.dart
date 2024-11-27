@@ -64,7 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
                      controller: titleTEController,
                    ),
                    ElevatedButton(onPressed: (){
-                     todos.add(todo(titleTEController.text, false));
+                     todos.add(todo(titleTEController.text.trim(), false));
+                     titleTEController.clear();
                      setState(() {
 
                      });
