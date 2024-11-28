@@ -36,12 +36,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("ToDo App")),
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){
+            todos.clear();
+            setState(() {
+
+            });
+          }, icon: Icon(Icons.delete_sweep_outlined))
+        ],
         backgroundColor: Colors.deepPurple.shade200,
       ),
       body: ListView.builder(
           itemCount: todos.length,
           itemBuilder: (context,index){
         return ListTile(
+          onLongPress: (){
+            todos[index].isdone =! todos[index].isdone;
+            if(mounted) {
+              setState(() {});
+            }
+          },
+          leading :todos[index].isdone ?Icon(Icons.done_outline_rounded) : Icon(Icons.circle_outlined),
           title: Text(todos[index].title),
           trailing: IconButton(onPressed: (){
 
